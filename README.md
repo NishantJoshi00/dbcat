@@ -1,6 +1,6 @@
 # DBcat
 [![Crates.io](https://img.shields.io/crates/v/dbcat?style=for-the-badge)](https://crates.io/crates/dbcat)
-[![License](https://img.shields.io/crates/l/dbcat?style=for-the-badge)](https://raw.githubusercontent.com/NishantJoshi00/dbcat/main/LICENSE)
+[![License](https://img.shields.io/crates/l/dbcat?label=LICENSE&style=for-the-badge)](https://raw.githubusercontent.com/NishantJoshi00/dbcat/main/LICENSE)
 
 A *cat(1)* equivalent for viewing sqlite database.
 
