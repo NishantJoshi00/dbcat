@@ -1,18 +1,23 @@
 # DBcat
-[![Crates.io](https://img.shields.io/crates/v/dbcat)](https://crates.io/crates/dbcat)
-[![Documentation](https://docs.rs/dbcat/badge.svg)](https://docs.rs/dbcat)
-[![License](https://img.shields.io/crates/l/dbcat)](https://github.com/nishantjoshi00/dbcat/LICENSE)
+[![Crates.io](https://img.shields.io/crates/v/dbcat?style=for-the-badge)](https://crates.io/crates/dbcat)
+[![License](https://img.shields.io/crates/l/dbcat?style=for-the-badge)](https://raw.githubusercontent.com/NishantJoshi00/dbcat/main/LICENSE)
 
 A *cat(1)* equivalent for viewing sqlite database.
 
 
 ## Installation
 
-- cargo: `cargo install dbcat`
+- cargo: 
+    ```bash
+    cargo install dbcat
+     ```
 
 ### Usage
 
-Read the database simply by running `dbcat <filename>.db`.
+Read the database simply by running 
+```bash
+dbcat <filename>.db
+```
 
 ![Basic Usage](./assets/basic.gif)
 
@@ -25,12 +30,17 @@ Change the format of the output by choice or automatically if the output is a tt
 
 ---
 
-Access individual tables by running `dbcat [-t <table>] <filename>.db`.
+Access individual tables by running 
+```bash
+dbcat [-t <table>] <filename>.db
+```
 
 ![Tables Access](./assets/tables.gif)
 ---
 
-Pass a filter query to filter the tables by running `dbcat [-t <table>] -f <query> <filename>.db`.
+Pass a filter query to filter the tables by running ```bash
+dbcat [-t <table>] -f <query> <filename>.db
+```
 
 ![Filter Command](./assets/query.gif)
 ---

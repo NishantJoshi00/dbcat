@@ -1,10 +1,15 @@
 [package]
 name = "dbcat"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 authors = ["Nishant Joshi <joshinishant@duck.com>"]
 description = "A *cat(1)* equivalent for viewing sqlite database."
 license-file = "LICENSE"
+license = "MIT"
+homepage = "https://github.com/nishantjoshi00/dbcat"
+repository = "https://github.com/nishantjoshi00/dbcat"
+keywords = ["cli", "tool", "executable", "sqlite"]
+readme = "README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
