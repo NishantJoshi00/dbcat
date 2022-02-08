@@ -3,6 +3,8 @@ name = "dbcat"
 version = "0.1.0"
 edition = "2021"
 authors = ["Nishant Joshi <joshinishant@duck.com>"]
+description = "A *cat(1)* equivalent for viewing sqlite database."
+license-file = "LICENSE"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
