@@ -38,12 +38,15 @@ dbcat [-t <table>] <filename>.db
 ![Tables Access](./assets/tables.gif)
 ---
 
-Pass a filter query to filter the tables by running ```bash
+Pass a filter query to filter the tables by running 
+
+```bash
 dbcat [-t <table>] -f <query> <filename>.db
 ```
 
 ![Filter Command](./assets/query.gif)
 ---
+
 ## Help
 
 Use `dbcat --help` to see the help.
@@ -52,4 +55,4 @@ Use `dbcat --help` to see the help.
 
 Your contribution is highly appreciated. Do not hesitate to open an issue or a
 pull request. Note that any contribution submitted for inclusion in the project
-will be licensed according to the terms given in [LICENSE.md](LICENSE.md).
+will be licensed according to the terms given in [LICENSE](LICENSE.md).
