@@ -1,6 +1,6 @@
-use std::{collections::HashMap, error::Error};
-use clap::Parser;
 use atty;
+use clap::Parser;
+use std::{collections::HashMap, error::Error};
 
 mod db;
 mod special_print;
@@ -10,18 +10,16 @@ use db::functions::Database;
 use special_print::functions::ttyprint;
 
 /// Read sql database from .db file. Select specific tables to print, filter tables based on query clause
-/// 
+///
 #[derive(Parser, Debug)]
 #[clap(author, version, about)]
 struct Args {
-
     /// Select the table from the database (optional)
     #[clap(short, long, multiple_occurrences(true))]
     table: Option<Vec<String>>,
 
-
     /// View table names from the database
-    #[clap(short, long, name="list-tables")]
+    #[clap(short, long, name = "list-tables")]
     list_tables: bool,
     /// Filter the table by the given clause (placed after WHERE) (optional)
     #[clap(short, long)]
@@ -31,15 +29,9 @@ struct Args {
     #[clap(short, long)]
     format: Option<String>,
 
-    /// Database File 
+    /// Database File
     file: String,
 }
-
-
-
-
-
-
 
 fn main() -> Result<(), Box<dyn Error>> {
     let args = Args::parse();
@@ -53,10 +45,8 @@ fn main() -> Result<(), Box<dyn Error>> {
         return Ok(());
     }
 
-
     let mut output: HashMap<String, Vec<Vec<String>>> = HashMap::new();
-    
-    
+
     let filter = args.query;
     if let Some(requested_tables) = args.table {
         for table in requested_tables {
@@ -69,7 +59,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             output.insert(table.clone(), db.get_data(table, filter.clone())?);
         }
     }
-    
+
     if let Some(format) = args.format {
         ttyprint(output, format)?;
     } else {
