@@ -1,10 +1,11 @@
-use std::collections::HashMap;
+use std::{collections::HashMap, error::Error};
 use clap::Parser;
 use atty;
 
 mod db;
 mod special_print;
 
+use colorize::AnsiColor;
 use db::functions::Database;
 use special_print::functions::ttyprint;
 
@@ -18,6 +19,10 @@ struct Args {
     #[clap(short, long, multiple_occurrences(true))]
     table: Option<Vec<String>>,
 
+
+    /// View table names from the database
+    #[clap(short, long, name="list-tables")]
+    list_tables: bool,
     /// Filter the table by the given clause (placed after WHERE) (optional)
     #[clap(short, long)]
     query: Option<String>,
@@ -36,32 +41,43 @@ struct Args {
 
 
 
-fn main() {
+fn main() -> Result<(), Box<dyn Error>> {
     let args = Args::parse();
-    let db = Database::new(&args.file).unwrap();
+    let db = Database::new(&args.file)?;
+    let tables = db.get_table_names()?;
+
+    if args.list_tables {
+        for table in tables {
+            println!("{}", table.green().bold());
+        }
+        return Ok(());
+    }
+
 
     let mut output: HashMap<String, Vec<Vec<String>>> = HashMap::new();
-    let tables = db.get_table_names();
+    
+    
     let filter = args.query;
     if let Some(requested_tables) = args.table {
         for table in requested_tables {
             if tables.contains(&table) {
-                output.insert(table.clone(), db.get_data(table, filter.clone()));
+                output.insert(table.clone(), db.get_data(table, filter.clone())?);
             }
         }
     } else {
         for table in tables {
-            output.insert(table.clone(), db.get_data(table, filter.clone()));
+            output.insert(table.clone(), db.get_data(table, filter.clone())?);
         }
     }
-
+    
     if let Some(format) = args.format {
-        ttyprint(output, format);
+        ttyprint(output, format)?;
     } else {
         if atty::is(atty::Stream::Stdout) {
-            ttyprint(output, "table".to_string());
+            ttyprint(output, "table".to_string())?;
         } else {
-            ttyprint(output, "raw".to_string());
+            ttyprint(output, "raw".to_string())?;
         }
     }
+    Ok(())
 }

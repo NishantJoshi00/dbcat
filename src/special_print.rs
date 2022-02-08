@@ -2,8 +2,9 @@ pub mod functions {
     use std::collections::HashMap;
     use cli_table::{Cell, Table, Style};
     use colorize::AnsiColor;
+    use std::error::Error;
 
-    pub fn ttyprint(data: HashMap<String, Vec<Vec<String>>>, format: String) {
+    pub fn ttyprint(data: HashMap<String, Vec<Vec<String>>>, format: String) -> Result<(), Box<dyn Error>> {
         match format.to_lowercase().as_str() {
             "table" => {
                 for (table, values) in data {
@@ -16,9 +17,8 @@ pub mod functions {
                     let otable = printtable.table()
                                     .title(values[0].iter().map(|v| v.cell().bold(true)))
                                     .bold(true);
-                                    
-
-                    cli_table::print_stdout(otable).unwrap();
+                    
+                    cli_table::print_stdout(otable)?;
                 }
             },
             "raw" => {
@@ -35,5 +35,7 @@ pub mod functions {
             }
 
         }
+
+        Ok(())
     }
 }
