@@ -1,4 +1,7 @@
 # DBcat
+[![Crates.io](https://img.shields.io/crates/v/dbcat)](https://crates.io/crates/dbcat)
+[![Documentation](https://docs.rs/dbcat/badge.svg)](https://docs.rs/dbcat)
+[![License](https://img.shields.io/crates/l/dbcat)](https://github.com/nishantjoshi00/dbcat/LICENSE)
 
 A *cat(1)* equivalent for viewing sqlite database.
 
@@ -11,23 +14,25 @@ A *cat(1)* equivalent for viewing sqlite database.
 
 Read the database simply by running `dbcat <filename>.db`.
 
-<!-- Asset -->
+![Basic Usage](./assets/basic.gif)
+
 
 ---
 
 Change the format of the output by choice or automatically if the output is a tty or not.
 
-<!-- Asset  -->
+![Atty Usage](./assets/atty_example.gif)
+
 ---
 
 Access individual tables by running `dbcat [-t <table>] <filename>.db`.
 
-<!-- Asset -->
+![Tables Access](./assets/tables.gif)
 ---
 
 Pass a filter query to filter the tables by running `dbcat [-t <table>] -f <query> <filename>.db`.
 
-<!-- Asset -->
+![Filter Command](./assets/query.gif)
 ---
 ## Help
 
