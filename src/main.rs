@@ -1,7 +1,7 @@
 use atty;
 use clap::Parser;
+use std::path::Path;
 use std::{collections::HashMap, error::Error};
-
 mod db;
 mod special_print;
 
@@ -35,6 +35,16 @@ struct Args {
 
 fn main() -> Result<(), Box<dyn Error>> {
     let args = Args::parse();
+
+    let path = Path::new(&args.file);
+
+    if !path.exists() {
+        return Err(Box::new(std::io::Error::new(
+            std::io::ErrorKind::NotFound,
+            format!("Error: Couldn't find {}", path.display()),
+        )));
+    }
+
     let db = Database::new(&args.file)?;
     let tables = db.get_table_names()?;
 
