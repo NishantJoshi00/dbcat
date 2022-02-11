@@ -15,6 +15,19 @@ A *cat(1)* equivalent for viewing sqlite database.
     $ cargo install dbcat
      ```
 
+### NetBSD ([Official repositories])
+```sh
+pkgin install dbcat
+```
+
+or, if you prefer to build it from source
+```sh
+cd /usr/pkgsrc/textproc/dbcat
+make install
+```
+
+[Official repositories]: https://pkgsrc.se/textproc/dbcat
+
 ### Usage
 
 Read the database simply by running 
