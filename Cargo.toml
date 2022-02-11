@@ -1,6 +1,6 @@
 [package]
 name = "dbcat"
-version = "0.1.4"
+version = "0.1.5"
 edition = "2021"
 authors = ["Nishant Joshi <joshinishant@duck.com>"]
 description = "A *cat(1)* equivalent for viewing sqlite database."

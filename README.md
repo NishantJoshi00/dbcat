@@ -11,6 +11,7 @@ A *cat(1)* equivalent for viewing sqlite database.
 
 - cargo:
     Install cargo from [Here!](https://www.rust-lang.org/tools/install)
+    
     ```bash
     $ cargo install dbcat
      ```
